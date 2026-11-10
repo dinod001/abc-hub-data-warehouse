@@ -25,43 +25,49 @@ The solution follows the modern **Medallion Architecture (Lakehouse / Warehouse 
 
 ```mermaid
 flowchart TD
-    subgraph Operational_Source["1. Operational Transactional Layer (OLTP)"]
-        direction TB
-        DB_OP[("PostgreSQL 14+<br/><b>abc_hub_operational</b><br/>(18 Normalized 3NF Tables)")]
+    subgraph Operational_Source["1. Operational Layer (OLTP)"]
+        DB_OP[("abc_hub_operational
+PostgreSQL 14+ 3NF")]
     end
 
-    subgraph Bronze_Layer["2. Bronze Layer (Raw Ingestion)"]
-        direction TB
-        B_Query["QueryDatabaseTableRecord<br/>• Incremental load via <code>updated_at</code><br/>• Zero impact on source OLTP"]
-        B_Pool["DBCPConnectionPool<br/>(Operational Pool)"]
-        B_Writer["JsonRecordSetWriter<br/>(Avro-in-memory to JSON)"]
-        B_Ports["18 Output Ports<br/>(Per Table Streams)"]
+    subgraph Bronze_Layer["2. Bronze Layer (Ingestion)"]
+        B_Query["QueryDatabaseTableRecord
+Incremental load via updated_at"]
+        B_Pool["DBCPConnectionPool"]
+        B_Writer["JsonRecordSetWriter"]
+        B_Ports["18 Output Ports"]
         B_Pool -.-> B_Query
         B_Writer -.-> B_Query
         B_Query --> B_Ports
     end
 
-    subgraph Silver_Layer["3. Silver Layer (Cleansing & Resilient Staging)"]
-        direction TB
+    subgraph Silver_Layer["3. Silver Layer (Cleansing & Staging)"]
         S_Ports["18 Input Ports"]
-        S_Cleanse["QueryRecord (Apache Calcite SQL)<br/>• Deduplication (DISTINCT)<br/>• Mandatory field validation<br/>• String trimming & COALESCE defaults"]
-        S_Put["PutDatabaseRecord<br/>• Dialect: PostgreSQL<br/>• Mode: Native UPSERT (ON CONFLICT)<br/>• Idempotent writes"]
-        S_Staging[("PostgreSQL 14+<br/><b>staging schema</b><br/>(Resilient Landing Tables)")]
-        S_Alert["LogMessage<br/>[SILVER_DATA_QUALITY_ALERT]"]
+        S_Cleanse["QueryRecord
+Deduplication & Imputation"]
+        S_Put["PutDatabaseRecord
+PostgreSQL UPSERT ON CONFLICT"]
+        S_Staging[("staging schema
+PostgreSQL Buffer Tables")]
+        S_Alert["LogMessage
+SILVER_DATA_QUALITY_ALERT"]
         
         S_Ports --> S_Cleanse
         S_Cleanse -->|cleansed| S_Put
-        S_Cleanse -->|dropped / invalid| S_Alert
-        S_Put -->|persists| S_Staging
+        S_Cleanse -->|dropped| S_Alert
+        S_Put --> S_Staging
     end
 
-    subgraph Gold_Layer["4. Gold Layer (Warehouse Transformations & Aggregations)"]
-        direction TB
-        G_Trigger["Trigger Signal<br/>(Post-Staging Completion)"]
-        G_Exec["ExecuteSQL / Stored Procedure<br/><code>CALL analytical.sp_run_full_etl();</code>"]
-        G_Proc["PL/pgSQL Engine<br/>• Conformed Date Generator<br/>• 3NF to 1NF Denormalization<br/>• Multi-source Aggregations"]
-        G_Success["LogMessage<br/>[GOLD_SUCCESS]"]
-        G_Fail["LogMessage<br/>[GOLD_ETL_ERROR]"]
+    subgraph Gold_Layer["4. Gold Layer (Warehouse Transformations)"]
+        G_Trigger["Trigger Signal"]
+        G_Exec["ExecuteSQL
+CALL analytical.sp_run_full_etl"]
+        G_Proc["PL/pgSQL Engine
+Star Schema Denormalization"]
+        G_Success["LogMessage
+GOLD_SUCCESS"]
+        G_Fail["LogMessage
+GOLD_ETL_ERROR"]
         
         G_Trigger --> G_Exec
         G_Exec --> G_Proc
@@ -69,30 +75,30 @@ flowchart TD
         G_Proc -->|failure| G_Fail
     end
 
-    subgraph Analytical_Warehouse["5. Analytical Star Schema (Gold Warehouse)"]
-        direction TB
-        DW_Dates[("dim_date<br/>(2020-2030)")]
-        DW_Cust[("dim_customer<br/>(Denormalized Profile)")]
-        DW_Content[("dim_content<br/>(Denormalized Titles)")]
-        DW_Inv[("dim_inventory_item<br/>(Warehouse Assets)")]
+    subgraph Analytical_Warehouse["5. Analytical Warehouse (Star Schema)"]
+        DW_Dates[("dim_date")]
+        DW_Cust[("dim_customer")]
+        DW_Content[("dim_content")]
+        DW_Inv[("dim_inventory_item")]
         
-        Fact_A[("fact_customer_daily_activity<br/>(Scenario A: Grain 1 Row / Cust / Day)")]
-        Fact_B[("fact_content_monthly_performance<br/>(Scenario B: Grain 1 Row / Title / Month)")]
-        Fact_C[("fact_inventory_daily_utilisation<br/>(Scenario C: Grain 1 Row / Item / Day)")]
+        Fact_A[("fact_customer_daily_activity
+Scenario A")]
+        Fact_B[("fact_content_monthly_performance
+Scenario B")]
+        Fact_C[("fact_inventory_daily_utilisation
+Scenario C")]
     end
 
-    subgraph Consumers["6. Analytics & Business Intelligence"]
-        direction LR
-        BI_Reports["Executive Dashboards<br/>(PowerBI / Tableau / Metabase)"]
-        BI_Queries["DataGrip & Ad-hoc SQL Analysis"]
+    subgraph Consumers["6. Analytics & Consumers"]
+        BI_Reports["PowerBI / Metabase / Dashboards"]
+        BI_Queries["DataGrip & SQL Analytics"]
     end
 
-    %% Flow Connections
-    DB_OP ==> B_Query
-    B_Ports ==> S_Ports
+    DB_OP --> B_Query
+    B_Ports --> S_Ports
     S_Staging -.-> G_Proc
-    G_Proc ==> Analytical_Warehouse
-    Analytical_Warehouse ==> Consumers
+    G_Proc --> Analytical_Warehouse
+    Analytical_Warehouse --> Consumers
 ```
 
 ---
@@ -125,89 +131,86 @@ erDiagram
     dim_inventory_item ||--o{ fact_inventory_daily_utilisation : "inventory_key"
 
     dim_date {
-        int date_key PK "YYYYMMDD"
-        date full_date "Unique ISO Date"
+        int date_key PK
+        date full_date
         int day_of_month
-        varchar day_name
+        string day_name
         int month_number
-        varchar month_name
+        string month_name
         int calendar_quarter
         int calendar_year
         boolean is_weekend
     }
 
     dim_customer {
-        serial customer_key PK "Surrogate Key"
-        bigint customer_id UK "Natural Operational Key"
-        varchar customer_no
-        varchar customer_name "Consolidated full name"
-        varchar gender
-        varchar city_name "Denormalized from city"
-        varchar country_name "Denormalized from country"
-        varchar customer_segment "Active subscription plan"
-        varchar status "Active / Suspended"
+        int customer_key PK
+        int customer_id
+        string customer_no
+        string customer_name
+        string gender
+        string city_name
+        string country_name
+        string customer_segment
+        string status
     }
 
     dim_content {
-        serial content_key PK "Surrogate Key"
-        bigint content_id UK "Natural Operational Key"
-        varchar content_title
-        varchar content_type "Movie / Series / Doc"
-        varchar primary_genre
-        varchar all_genres "Aggregated comma-separated"
+        int content_key PK
+        int content_id
+        string content_title
+        string content_type
+        string primary_genre
+        string all_genres
         date release_date
-        varchar language
-        varchar age_rating
+        string language
+        string age_rating
         int duration_minutes
     }
 
     dim_inventory_item {
-        serial inventory_key PK "Surrogate Key"
-        bigint inventory_id UK "Natural Operational Key"
-        bigint content_id
-        varchar content_title
-        varchar barcode
+        int inventory_key PK
+        int inventory_id
+        int content_id
+        string content_title
+        string barcode
         date purchase_date
-        varchar item_condition "New / Good / Damaged"
-        varchar warehouse_name "Denormalized warehouse"
-        varchar warehouse_city
-        varchar item_status "Available / Rented / Retired"
+        string item_condition
+        string warehouse_name
+        string warehouse_city
+        string item_status
     }
 
     fact_customer_daily_activity {
-        int customer_key FK, PK
-        int date_key FK, PK
-        int total_streaming_sessions "Additive"
-        int total_streaming_duration_mins "Additive"
-        int total_physical_rentals "Additive"
-        int total_returned_items "Additive"
-        numeric total_amount_spent "Additive financial"
-        int total_support_tickets "Additive"
-        timestamp loaded_at
+        int customer_key PK, FK
+        int date_key PK, FK
+        int total_streaming_sessions
+        int total_streaming_duration_mins
+        int total_physical_rentals
+        int total_returned_items
+        numeric total_amount_spent
+        int total_support_tickets
     }
 
     fact_content_monthly_performance {
-        int content_key FK, PK
-        int month_date_key FK, PK "First day of month (YYYYMM01)"
-        int total_streams "Additive"
-        int total_rental_count "Additive"
-        numeric total_revenue "Additive financial"
-        int total_rating_score "Additive"
-        int total_review_count "Additive"
-        numeric average_customer_rating "Non-additive"
-        int total_wishlist_additions "Additive"
-        timestamp loaded_at
+        int content_key PK, FK
+        int month_date_key PK, FK
+        int total_streams
+        int total_rental_count
+        numeric total_revenue
+        int total_rating_score
+        int total_review_count
+        numeric average_customer_rating
+        int total_wishlist_additions
     }
 
     fact_inventory_daily_utilisation {
-        int inventory_key FK, PK
-        int date_key FK, PK
-        int total_rentals "Additive"
-        int total_returns "Additive"
-        int available_day_count "Semi-additive"
-        int rented_day_count "Semi-additive"
-        numeric utilisation_percentage "Non-additive ratio"
-        timestamp loaded_at
+        int inventory_key PK, FK
+        int date_key PK, FK
+        int total_rentals
+        int total_returns
+        int available_day_count
+        int rented_day_count
+        numeric utilisation_percentage
     }
 ```
 
