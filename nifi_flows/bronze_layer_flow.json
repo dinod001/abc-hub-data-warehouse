@@ -1,0 +1,1954 @@
+{
+  "flowEncodingVersion": "1.0",
+  "flow": {
+    "identifier": "bronze-layer-flow",
+    "name": "Bronze Layer",
+    "description": "Bronze Layer Data Extraction from Operational PostgreSQL Database",
+    "version": 1
+  },
+  "snapshotMetadata": {
+    "flowIdentifier": "bronze-layer-flow",
+    "flowName": "Bronze Layer",
+    "version": 1,
+    "comments": "Bronze Layer extraction flow"
+  },
+  "flowContents": {
+    "identifier": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+    "instanceIdentifier": "c3372a3f-01a1-1000-3240-ca6b65368f77",
+    "name": "Bronze Layer",
+    "comments": "",
+    "position": {
+      "x": 200.0,
+      "y": 320.0
+    },
+    "processGroups": [],
+    "remoteProcessGroups": [],
+    "processors": [
+      {
+        "identifier": "c35bace3-01a1-1000-5774-608271b71f4c",
+        "instanceIdentifier": "9acce47d-37eb-3755-77d1-023ca77f42ba",
+        "name": "Warehouse",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 952.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "warehouse",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace4-01a1-1000-8576-ffd24a441b16",
+        "instanceIdentifier": "1f525bf9-1825-312f-abc8-645d492b227f",
+        "name": "Wishlist",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 1248.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "wishlist",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace2-01a1-1000-4ad4-fbea3ff57ed6",
+        "instanceIdentifier": "00153823-57ba-32d1-a07e-7dc63cf19e08",
+        "name": "Support_ticket",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 648.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "support_ticket",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "fdb4564d-d2a2-3f02-b7dc-17a0fcfd8b03",
+        "instanceIdentifier": "c34ba570-01a1-1000-c819-11a83371b087",
+        "name": "Customer",
+        "comments": "",
+        "position": {
+          "x": 392.0,
+          "y": -144.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "customer",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace1-01a1-1000-730e-aaa55fa40e67",
+        "instanceIdentifier": "53907889-9fff-381d-d1e3-548e35aadb37",
+        "name": "Inventory item",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 800.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "inventory_item",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed738-01a1-1000-3c8b-81b13c643407",
+        "instanceIdentifier": "560d0049-a23a-3b58-6827-070ad039d3e2",
+        "name": "Content_type",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 1696.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "content_type",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c357f5ad-01a1-1000-b3a4-ac021008201c",
+        "instanceIdentifier": "00ac60c6-485d-3262-fb98-e097049dec50",
+        "name": "Rental",
+        "comments": "",
+        "position": {
+          "x": 392.0,
+          "y": 304.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "rental",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace0-01a1-1000-5ad3-c9a1eec9b598",
+        "instanceIdentifier": "69a8c418-6d87-3f17-6518-a9ceddcaa3ee",
+        "name": "Review",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 1096.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "review",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c357da10-01a1-1000-e596-35d4382d6ffd",
+        "instanceIdentifier": "b06ac82e-9529-3aae-78f8-53555fde5a34",
+        "name": "Content",
+        "comments": "",
+        "position": {
+          "x": 392.0,
+          "y": 8.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "content",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed737-01a1-1000-7c46-e21704ec4991",
+        "instanceIdentifier": "59443add-9381-3f5d-bfac-f1e8d1e9f447",
+        "name": "Genre",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 1544.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "genre",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed736-01a1-1000-03b7-00c71d504763",
+        "instanceIdentifier": "43735fe1-f00e-353e-8025-9990e943cad2",
+        "name": "Content_genre",
+        "comments": "",
+        "position": {
+          "x": 384.0,
+          "y": 1400.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "content_genre",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c357e529-01a1-1000-9c17-5258b8b09fa5",
+        "instanceIdentifier": "024d07c3-4e34-30fb-a657-785c2985b73b",
+        "name": "Streaming session",
+        "comments": "",
+        "position": {
+          "x": 392.0,
+          "y": 160.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "streaming_session",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c3580b15-01a1-1000-1bf9-fac355234bd5",
+        "instanceIdentifier": "6ca92975-34c2-3b97-a87a-c5370258503e",
+        "name": "Payment",
+        "comments": "",
+        "position": {
+          "x": 392.0,
+          "y": 456.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "payment",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "3fffe6bd-64be-43bf-bb0d-bd7b8e66d0b3",
+        "instanceIdentifier": "65e4c430-cdf0-4036-85c8-c23816f157c4",
+        "name": "Customer Address",
+        "comments": "",
+        "position": {
+          "x": 1200.0,
+          "y": 100.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "customer_address",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "125f6464-8012-46b2-8ed0-636a5c462a96",
+        "instanceIdentifier": "1c0df3d5-c1ec-4dd9-b70b-88a8a4cc4fb6",
+        "name": "City",
+        "comments": "",
+        "position": {
+          "x": 1200.0,
+          "y": 300.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "city",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "903b3d07-81bc-4b03-b9a3-3d78ff36e336",
+        "instanceIdentifier": "b938048d-2c9a-4842-95fe-9c614c404f32",
+        "name": "Country",
+        "comments": "",
+        "position": {
+          "x": 1200.0,
+          "y": 500.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "country",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "f0b5c1a6-519c-4eff-b941-4cf4e89714f2",
+        "instanceIdentifier": "8df3bc69-33c0-4c59-a936-15c43be862c4",
+        "name": "Customer Subscription",
+        "comments": "",
+        "position": {
+          "x": 1200.0,
+          "y": 700.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "customer_subscription",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "096b0f49-6512-405b-b6b6-6a1528ef3fff",
+        "instanceIdentifier": "5ee42ef3-6c3c-40f1-83f2-4abe6106c20d",
+        "name": "Subscription Plan",
+        "comments": "",
+        "position": {
+          "x": 1200.0,
+          "y": 900.0
+        },
+        "type": "org.apache.nifi.processors.standard.QueryDatabaseTableRecord",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Table Name": "subscription_plan",
+          "Max Wait Time": "0 seconds",
+          "Normalize Table/Column Names": "false",
+          "Database Connection Pooling Service": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+          "Default Decimal Scale": "0",
+          "Initial Load Strategy": "Start at Beginning",
+          "Fetch Size": "0",
+          "Output Batch Size": "0",
+          "Use Avro Logical Types": "false",
+          "Database Type": "PostgreSQL",
+          "Record Writer": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+          "Max Rows Per FlowFile": "0",
+          "Default Decimal Precision": "10",
+          "Maximum Number of Fragments": "0",
+          "Maximum-value Columns": "updated_at"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      }
+    ],
+    "inputPorts": [],
+    "outputPorts": [
+      {
+        "identifier": "c35bace5-01a1-1000-13d2-959107f31be2",
+        "instanceIdentifier": "934a1149-114e-3705-4ff9-3f1e181ae9d4",
+        "name": "inventory_item_out",
+        "position": {
+          "x": 1312.0,
+          "y": 800.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed73b-01a1-1000-7cbe-d60d907fadc5",
+        "instanceIdentifier": "452c8b3a-1462-32db-230e-26d33ead69a8",
+        "name": "content_genre_out",
+        "position": {
+          "x": 1288.0,
+          "y": 1400.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace8-01a1-1000-cb0a-983a0c274828",
+        "instanceIdentifier": "b2df52f2-2d30-33ec-05cc-b6c4c304fb9e",
+        "name": "Wishlist_out",
+        "position": {
+          "x": 1232.0,
+          "y": 1256.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed73a-01a1-1000-bc2d-35b734ab0311",
+        "instanceIdentifier": "d7500bde-cb4c-3683-8e5c-4f3ac82bc385",
+        "name": "Genre_out",
+        "position": {
+          "x": 1256.0,
+          "y": 1560.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace6-01a1-1000-a22a-9282119a34d0",
+        "instanceIdentifier": "cbc2576d-61cc-3568-4288-d40346571aa8",
+        "name": "Review_out",
+        "position": {
+          "x": 1256.0,
+          "y": 1112.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace9-01a1-1000-430b-bde463751958",
+        "instanceIdentifier": "5671eb6f-6963-314a-a578-bb5aa4dad947",
+        "name": "warehouse_out",
+        "position": {
+          "x": 1288.0,
+          "y": 952.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bace7-01a1-1000-f25f-2bb5645596fa",
+        "instanceIdentifier": "ba9313bf-f3b3-37a7-0b79-aae340b6af38",
+        "name": "support_ticket_out",
+        "position": {
+          "x": 1320.0,
+          "y": 680.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35a9c83-01a1-1000-260d-dd2cc11a440e",
+        "instanceIdentifier": "f588aefb-643c-36e9-ee77-3d7920f7ef34",
+        "name": "Streaming_out",
+        "position": {
+          "x": 1296.0,
+          "y": 160.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35a2c15-01a1-1000-297c-d17a0b875eca",
+        "instanceIdentifier": "0e6b58f7-b2e2-3308-9cfa-b64efe24cd5a",
+        "name": "Content_out",
+        "position": {
+          "x": 1320.0,
+          "y": 8.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ae700-01a1-1000-1cf1-a12233debe03",
+        "instanceIdentifier": "2e99934a-2724-3c60-e071-2e6cdc3d5a8e",
+        "name": "Rental_out",
+        "position": {
+          "x": 1264.0,
+          "y": 320.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed739-01a1-1000-2d21-9fa0fe25b789",
+        "instanceIdentifier": "50cf89b7-851b-37d6-7756-2f2613f29b5e",
+        "name": "Content_type",
+        "position": {
+          "x": 1232.0,
+          "y": 1704.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "d6215f00-890a-30cf-8c35-4bef3ed842ae",
+        "instanceIdentifier": "c356403d-01a1-1000-52e0-624c6b928b35",
+        "name": "Customer_out",
+        "position": {
+          "x": 1328.0,
+          "y": -112.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35b2b54-01a1-1000-459a-96091c6d63cc",
+        "instanceIdentifier": "f8c84742-e661-316f-32e0-5e19fd024105",
+        "name": "Payment_out",
+        "position": {
+          "x": 1240.0,
+          "y": 464.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "7181672f-0e72-4f27-a2a2-0f9c3db65c9a",
+        "instanceIdentifier": "8e5ef445-936a-4a74-9b52-ac4536ad2b88",
+        "name": "customer_address_out",
+        "position": {
+          "x": 1600.0,
+          "y": 100.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "59cfd393-fbe1-4463-a06f-551e6e706a8d",
+        "instanceIdentifier": "588cdeec-580a-4f5b-8fbd-d2e5504ad254",
+        "name": "city_out",
+        "position": {
+          "x": 1600.0,
+          "y": 300.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "3d756150-1a92-42f7-8654-af0a5426f7db",
+        "instanceIdentifier": "9c646031-eb39-4e48-add2-dbd1f1b94b5e",
+        "name": "country_out",
+        "position": {
+          "x": 1600.0,
+          "y": 500.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "8a15ada7-d553-417c-a8bc-bbb2ed265685",
+        "instanceIdentifier": "15ae480c-9096-4314-82f9-c38cc4c46d74",
+        "name": "customer_subscription_out",
+        "position": {
+          "x": 1600.0,
+          "y": 700.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "64fa5023-87a0-4e04-b8f2-9f52b68f55c1",
+        "instanceIdentifier": "dfa48d67-1fea-4663-910f-2a13f130b51d",
+        "name": "subscription_plan_out",
+        "position": {
+          "x": 1600.0,
+          "y": 900.0
+        },
+        "type": "OUTPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "OUTPUT_PORT",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      }
+    ],
+    "connections": [
+      {
+        "identifier": "a3944360-97bd-3100-9f29-07ee951823ee",
+        "instanceIdentifier": "c35b62e4-01a1-1000-bbe5-282ebb88eb9e",
+        "name": "",
+        "source": {
+          "id": "c3580b15-01a1-1000-1bf9-fac355234bd5",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Payment",
+          "comments": "",
+          "instanceIdentifier": "6ca92975-34c2-3b97-a87a-c5370258503e"
+        },
+        "destination": {
+          "id": "c35b2b54-01a1-1000-459a-96091c6d63cc",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Pyament_out",
+          "instanceIdentifier": "f8c84742-e661-316f-32e0-5e19fd024105"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "1d165f18-b96e-3b27-b23f-7b8bdfa5236a",
+        "instanceIdentifier": "c35a92c5-01a1-1000-8a21-26e8f9da2cf0",
+        "name": "",
+        "source": {
+          "id": "c357da10-01a1-1000-e596-35d4382d6ffd",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Content",
+          "comments": "",
+          "instanceIdentifier": "b06ac82e-9529-3aae-78f8-53555fde5a34"
+        },
+        "destination": {
+          "id": "c35a2c15-01a1-1000-297c-d17a0b875eca",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Content_out",
+          "instanceIdentifier": "0e6b58f7-b2e2-3308-9cfa-b64efe24cd5a"
+        },
+        "labelIndex": 0,
+        "zIndex": 2,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bacec-01a1-1000-33d9-18c8c1ff4aa9",
+        "instanceIdentifier": "26a9d93d-c4e8-3e67-55a5-c4d385045470",
+        "name": "",
+        "source": {
+          "id": "c35bace1-01a1-1000-730e-aaa55fa40e67",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Inventory item",
+          "comments": "",
+          "instanceIdentifier": "53907889-9fff-381d-d1e3-548e35aadb37"
+        },
+        "destination": {
+          "id": "c35bace5-01a1-1000-13d2-959107f31be2",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "inventory_item_out",
+          "instanceIdentifier": "934a1149-114e-3705-4ff9-3f1e181ae9d4"
+        },
+        "labelIndex": 0,
+        "zIndex": 2,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35baced-01a1-1000-fdb6-ce52f2fe233b",
+        "instanceIdentifier": "b7511db0-0c6b-3fb5-3a45-d7c0015afd6c",
+        "name": "",
+        "source": {
+          "id": "c35bace0-01a1-1000-5ad3-c9a1eec9b598",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Review",
+          "comments": "",
+          "instanceIdentifier": "69a8c418-6d87-3f17-6518-a9ceddcaa3ee"
+        },
+        "destination": {
+          "id": "c35bace6-01a1-1000-a22a-9282119a34d0",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Review_out",
+          "instanceIdentifier": "cbc2576d-61cc-3568-4288-d40346571aa8"
+        },
+        "labelIndex": 0,
+        "zIndex": 4,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "b0a42d43-024b-3b90-8937-ebe566950e5d",
+        "instanceIdentifier": "c35b2388-01a1-1000-7413-d6b3e3593648",
+        "name": "",
+        "source": {
+          "id": "c357f5ad-01a1-1000-b3a4-ac021008201c",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Rental",
+          "comments": "",
+          "instanceIdentifier": "00ac60c6-485d-3262-fb98-e097049dec50"
+        },
+        "destination": {
+          "id": "c35ae700-01a1-1000-1cf1-a12233debe03",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Rental_out",
+          "instanceIdentifier": "2e99934a-2724-3c60-e071-2e6cdc3d5a8e"
+        },
+        "labelIndex": 0,
+        "zIndex": 4,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "b1ab50af-4f73-3d85-a775-dd33982eb1ba",
+        "instanceIdentifier": "c35adca3-01a1-1000-b067-c7840e75d6f0",
+        "name": "",
+        "source": {
+          "id": "c357e529-01a1-1000-9c17-5258b8b09fa5",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Streaming session",
+          "comments": "",
+          "instanceIdentifier": "024d07c3-4e34-30fb-a657-785c2985b73b"
+        },
+        "destination": {
+          "id": "c35a9c83-01a1-1000-260d-dd2cc11a440e",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Streaming_out",
+          "instanceIdentifier": "f588aefb-643c-36e9-ee77-3d7920f7ef34"
+        },
+        "labelIndex": 0,
+        "zIndex": 3,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35baceb-01a1-1000-a017-c3eca948caf0",
+        "instanceIdentifier": "6c85a72d-8dd5-36b7-45ec-a5872da65b92",
+        "name": "",
+        "source": {
+          "id": "c35bace4-01a1-1000-8576-ffd24a441b16",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Wishlist",
+          "comments": "",
+          "instanceIdentifier": "1f525bf9-1825-312f-abc8-645d492b227f"
+        },
+        "destination": {
+          "id": "c35bace8-01a1-1000-cb0a-983a0c274828",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Wishlist_out",
+          "instanceIdentifier": "b2df52f2-2d30-33ec-05cc-b6c4c304fb9e"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed73c-01a1-1000-e70f-4b694be0c4c7",
+        "instanceIdentifier": "97dad660-4a66-350a-62da-67e07673cb16",
+        "name": "",
+        "source": {
+          "id": "c35ed737-01a1-1000-7c46-e21704ec4991",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Genre",
+          "comments": "",
+          "instanceIdentifier": "59443add-9381-3f5d-bfac-f1e8d1e9f447"
+        },
+        "destination": {
+          "id": "c35ed73a-01a1-1000-bc2d-35b734ab0311",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Genre_out",
+          "instanceIdentifier": "d7500bde-cb4c-3683-8e5c-4f3ac82bc385"
+        },
+        "labelIndex": 0,
+        "zIndex": 4,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bacea-01a1-1000-19f6-18e2d0efc421",
+        "instanceIdentifier": "5ac68c5f-7e97-39d4-6a8d-1fb219e21159",
+        "name": "",
+        "source": {
+          "id": "c35bace2-01a1-1000-4ad4-fbea3ff57ed6",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Support_ticket",
+          "comments": "",
+          "instanceIdentifier": "00153823-57ba-32d1-a07e-7dc63cf19e08"
+        },
+        "destination": {
+          "id": "c35bace7-01a1-1000-f25f-2bb5645596fa",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "support_ticket_out",
+          "instanceIdentifier": "ba9313bf-f3b3-37a7-0b79-aae340b6af38"
+        },
+        "labelIndex": 0,
+        "zIndex": 1,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "2aadf8df-e6f8-3e64-894d-724a7ad6a623",
+        "instanceIdentifier": "c35696bb-01a1-1000-a340-df08326fac7d",
+        "name": "",
+        "source": {
+          "id": "fdb4564d-d2a2-3f02-b7dc-17a0fcfd8b03",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Customer",
+          "comments": "",
+          "instanceIdentifier": "c34ba570-01a1-1000-c819-11a83371b087"
+        },
+        "destination": {
+          "id": "d6215f00-890a-30cf-8c35-4bef3ed842ae",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Customer_out",
+          "instanceIdentifier": "c356403d-01a1-1000-52e0-624c6b928b35"
+        },
+        "labelIndex": 0,
+        "zIndex": 1,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed73d-01a1-1000-4755-a64154ee2d46",
+        "instanceIdentifier": "6e6651b7-4237-36de-dc70-cd26c643c696",
+        "name": "",
+        "source": {
+          "id": "c35ed736-01a1-1000-03b7-00c71d504763",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Content_genre",
+          "comments": "",
+          "instanceIdentifier": "43735fe1-f00e-353e-8025-9990e943cad2"
+        },
+        "destination": {
+          "id": "c35ed73b-01a1-1000-7cbe-d60d907fadc5",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "content_genre_out",
+          "instanceIdentifier": "452c8b3a-1462-32db-230e-26d33ead69a8"
+        },
+        "labelIndex": 0,
+        "zIndex": 3,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35ed73e-01a1-1000-fb63-6dd8b9440ca1",
+        "instanceIdentifier": "093123aa-dc64-3087-f995-86faf18f08fc",
+        "name": "",
+        "source": {
+          "id": "c35ed738-01a1-1000-3c8b-81b13c643407",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Content_type",
+          "comments": "",
+          "instanceIdentifier": "560d0049-a23a-3b58-6827-070ad039d3e2"
+        },
+        "destination": {
+          "id": "c35ed739-01a1-1000-2d21-9fa0fe25b789",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Content_type",
+          "instanceIdentifier": "50cf89b7-851b-37d6-7756-2f2613f29b5e"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "c35bacee-01a1-1000-034b-87a4b586053b",
+        "instanceIdentifier": "fa19c10a-7896-3a79-7226-e9838180b941",
+        "name": "",
+        "source": {
+          "id": "c35bace3-01a1-1000-5774-608271b71f4c",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Warehouse",
+          "comments": "",
+          "instanceIdentifier": "9acce47d-37eb-3755-77d1-023ca77f42ba"
+        },
+        "destination": {
+          "id": "c35bace9-01a1-1000-430b-bde463751958",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "warehouse_out",
+          "instanceIdentifier": "5671eb6f-6963-314a-a578-bb5aa4dad947"
+        },
+        "labelIndex": 0,
+        "zIndex": 3,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "5c39d3d2-ec5d-4eba-abbc-1e0dcb57c8d9",
+        "instanceIdentifier": "19ec7b2e-81ef-4d1b-bc82-52ecd82a2e3a",
+        "name": "",
+        "source": {
+          "id": "3fffe6bd-64be-43bf-bb0d-bd7b8e66d0b3",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Customer Address"
+        },
+        "destination": {
+          "id": "7181672f-0e72-4f27-a2a2-0f9c3db65c9a",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "customer_address_out"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "3eed6972-bad9-4fae-bc4f-ce37cbfbfc49",
+        "instanceIdentifier": "b35be5b1-8a73-4dbd-96a5-1bd2f13ef4f2",
+        "name": "",
+        "source": {
+          "id": "125f6464-8012-46b2-8ed0-636a5c462a96",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "City"
+        },
+        "destination": {
+          "id": "59cfd393-fbe1-4463-a06f-551e6e706a8d",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "city_out"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "21071558-dcec-4a27-94d1-b0791c6906b5",
+        "instanceIdentifier": "fa4b7a02-6b97-41f2-9e69-66b799ac8e1b",
+        "name": "",
+        "source": {
+          "id": "903b3d07-81bc-4b03-b9a3-3d78ff36e336",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Country"
+        },
+        "destination": {
+          "id": "3d756150-1a92-42f7-8654-af0a5426f7db",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "country_out"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "7be4c8e3-9e7b-45ed-a15e-d962e2deb553",
+        "instanceIdentifier": "72967787-3691-4d51-b316-f5008343f894",
+        "name": "",
+        "source": {
+          "id": "f0b5c1a6-519c-4eff-b941-4cf4e89714f2",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Customer Subscription"
+        },
+        "destination": {
+          "id": "8a15ada7-d553-417c-a8bc-bbb2ed265685",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "customer_subscription_out"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "14add01b-13db-4b61-bd90-af7534cc64da",
+        "instanceIdentifier": "99d42480-1413-415b-a895-ab4b0dc6b0d9",
+        "name": "",
+        "source": {
+          "id": "096b0f49-6512-405b-b6b6-6a1528ef3fff",
+          "type": "PROCESSOR",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "Subscription Plan"
+        },
+        "destination": {
+          "id": "64fa5023-87a0-4e04-b8f2-9f52b68f55c1",
+          "type": "OUTPUT_PORT",
+          "groupId": "7601a5b2-8217-31ef-b042-f44f4af54a70",
+          "name": "subscription_plan_out"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      }
+    ],
+    "labels": [],
+    "funnels": [],
+    "controllerServices": [
+      {
+        "identifier": "95bbc2e5-92b1-3345-98fc-ecba5cd4d82a",
+        "instanceIdentifier": "c34d796a-01a1-1000-c4f5-099fdf020d4b",
+        "name": "DBCPConnectionPool",
+        "comments": "",
+        "type": "org.apache.nifi.dbcp.DBCPConnectionPool",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-dbcp-service-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Maximum Idle Connections": "8",
+          "Database Driver Locations": "C:\\nifi-2.12.0-bin\\nifi-2.12.0\\drivers\\postgresql-42.7.13.jar",
+          "Max Wait Time": "500 millis",
+          "Database Driver Class Name": "org.postgresql.Driver",
+          "Minimum Idle Connections": "0",
+          "Max Total Connections": "8",
+          "Database Connection URL": "jdbc:postgresql://localhost:5432/abc_hub_operational",
+          "Password Source": "PASSWORD",
+          "Time Between Eviction Runs": "-1",
+          "Database User": "postgres",
+          "Soft Minimum Evictable Idle Time": "-1",
+          "Maximum Connection Lifetime": "-1",
+          "Minimum Evictable Idle Time": "30 mins",
+          "Password": "1234"
+        },
+        "propertyDescriptors": {},
+        "controllerServiceApis": [
+          {
+            "type": "org.apache.nifi.dbcp.DBCPService",
+            "bundle": {
+              "group": "org.apache.nifi",
+              "artifact": "nifi-standard-services-api-nar",
+              "version": "2.12.0"
+            }
+          }
+        ],
+        "scheduledState": "ENABLED",
+        "bulletinLevel": "WARN",
+        "componentType": "CONTROLLER_SERVICE",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      },
+      {
+        "identifier": "e8f2bc88-df14-3fd2-80f3-b3f884e3467d",
+        "instanceIdentifier": "c3528abd-01a1-1000-5451-341f31572229",
+        "name": "JsonRecordSetWriter",
+        "comments": "",
+        "type": "org.apache.nifi.json.JsonRecordSetWriter",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-record-serialization-services-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Schema Text": "${avro.schema}",
+          "Allow Scientific Notation": "false",
+          "Compression Level": "1",
+          "Output Grouping": "output-array",
+          "Schema Access Strategy": "inherit-record-schema",
+          "Schema Name": "${schema.name}",
+          "Pretty Print JSON": "false",
+          "Suppress Null Values": "never-suppress",
+          "Schema Write Strategy": "no-schema",
+          "Serialized JSON Input Handling": "ENABLED",
+          "Compression Format": "none",
+          "Timestamp Representation": "AUTO"
+        },
+        "propertyDescriptors": {},
+        "controllerServiceApis": [
+          {
+            "type": "org.apache.nifi.serialization.RecordSetWriterFactory",
+            "bundle": {
+              "group": "org.apache.nifi",
+              "artifact": "nifi-standard-services-api-nar",
+              "version": "2.12.0"
+            }
+          }
+        ],
+        "scheduledState": "ENABLED",
+        "bulletinLevel": "WARN",
+        "componentType": "CONTROLLER_SERVICE",
+        "groupIdentifier": "7601a5b2-8217-31ef-b042-f44f4af54a70"
+      }
+    ],
+    "defaultFlowFileExpiration": "0 sec",
+    "defaultBackPressureObjectThreshold": 10000,
+    "defaultBackPressureDataSizeThreshold": "1 GB",
+    "scheduledState": "ENABLED",
+    "executionEngine": "INHERITED",
+    "maxConcurrentTasks": 1,
+    "statelessFlowTimeout": "1 min",
+    "componentType": "PROCESS_GROUP",
+    "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE",
+    "flowFileConcurrency": "UNBOUNDED",
+    "groupIdentifier": "5edd70c2-c4c0-3a48-89e1-5969a90a9001"
+  },
+  "parameterContexts": {},
+  "externalControllerServices": {},
+  "parameterProviders": {}
+}

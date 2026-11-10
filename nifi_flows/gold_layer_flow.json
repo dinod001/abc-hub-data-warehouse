@@ -1,0 +1,319 @@
+{
+  "flowEncodingVersion": "1.0",
+  "flow": {
+    "identifier": "bronze-layer-flow",
+    "name": "Gold Layer",
+    "description": "Gold Layer Star Schema Aggregations",
+    "version": 1
+  },
+  "snapshotMetadata": {
+    "flowIdentifier": "bronze-layer-flow",
+    "flowName": "Gold Layer",
+    "version": 1,
+    "comments": "Bronze Layer extraction flow"
+  },
+  "flowContents": {
+    "identifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+    "instanceIdentifier": "9e30f7cc-cfa8-4abf-9968-bad2db63faa6",
+    "name": "Gold Layer",
+    "comments": "Gold Layer - Star Schema Transformations",
+    "position": {
+      "x": 1000.0,
+      "y": 320.0
+    },
+    "processGroups": [],
+    "remoteProcessGroups": [],
+    "processors": [
+      {
+        "identifier": "b58a83a8-78f6-469b-8997-b05182ba9e6a",
+        "instanceIdentifier": "b471eed1-63f4-4685-b533-a1f35c2b195f",
+        "name": "Execute_Star_Schema_ETL",
+        "comments": "Calls analytical.sp_run_full_etl() to populate dimensions and facts",
+        "position": {
+          "x": 550.0,
+          "y": 300.0
+        },
+        "type": "org.apache.nifi.processors.standard.ExecuteSQL",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Database Connection Pooling Service": "050422e8-90f3-4494-9808-686d581dd247",
+          "SQL select query": "SELECT analytical.fn_run_full_etl();"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      },
+      {
+        "identifier": "ce673bb6-f8be-4ad5-99bf-9e849f37083b",
+        "instanceIdentifier": "4a92ec80-2cce-465b-a116-a607f6b9a1e5",
+        "name": "Log_Gold_ETL_Success",
+        "comments": "Logs successful ETL run",
+        "position": {
+          "x": 1000.0,
+          "y": 200.0
+        },
+        "type": "org.apache.nifi.processors.standard.LogMessage",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "log-level": "INFO",
+          "log-prefix": "[GOLD_SUCCESS]",
+          "log-message": "Successfully refreshed all Dimensions and Facts in analytical schema!"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [
+          "success"
+        ],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      },
+      {
+        "identifier": "7f9fdf1b-c37c-4857-9755-84e080ea5263",
+        "instanceIdentifier": "09ad3124-4e39-4fcc-835b-58da52ae2b01",
+        "name": "Log_Gold_ETL_Failure",
+        "comments": "Logs failed ETL run",
+        "position": {
+          "x": 1000.0,
+          "y": 420.0
+        },
+        "type": "org.apache.nifi.processors.standard.LogMessage",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-standard-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "log-level": "ERROR",
+          "log-prefix": "[GOLD_ETL_ERROR]",
+          "log-message": "Failed to execute analytical.sp_run_full_etl()!"
+        },
+        "propertyDescriptors": {},
+        "style": {},
+        "schedulingPeriod": "1 min",
+        "schedulingStrategy": "TIMER_DRIVEN",
+        "executionNode": "ALL",
+        "penaltyDuration": "30 sec",
+        "yieldDuration": "1 sec",
+        "bulletinLevel": "WARN",
+        "runDurationMillis": 0,
+        "concurrentlySchedulableTaskCount": 1,
+        "autoTerminatedRelationships": [
+          "success"
+        ],
+        "scheduledState": "ENABLED",
+        "retryCount": 10,
+        "retriedRelationships": [],
+        "backoffMechanism": "PENALIZE_FLOWFILE",
+        "maxBackoffPeriod": "10 mins",
+        "componentType": "PROCESSOR",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      }
+    ],
+    "inputPorts": [
+      {
+        "identifier": "e68b5d0c-8166-4c7c-966f-36267f5901fb",
+        "instanceIdentifier": "78eed807-2030-4259-838a-733a4cd94e2b",
+        "name": "in_staging_completed_trigger",
+        "position": {
+          "x": 200.0,
+          "y": 300.0
+        },
+        "type": "INPUT_PORT",
+        "concurrentlySchedulableTaskCount": 1,
+        "scheduledState": "ENABLED",
+        "allowRemoteAccess": false,
+        "portFunction": "STANDARD",
+        "componentType": "INPUT_PORT",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      }
+    ],
+    "outputPorts": [],
+    "connections": [
+      {
+        "identifier": "2d607418-3b64-406f-8ffe-f2c573641aa6",
+        "instanceIdentifier": "9dc7e1d5-2716-4667-acec-53f3c3163fa2",
+        "name": "",
+        "source": {
+          "id": "e68b5d0c-8166-4c7c-966f-36267f5901fb",
+          "type": "INPUT_PORT",
+          "groupId": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+          "name": "in_staging_completed_trigger"
+        },
+        "destination": {
+          "id": "b58a83a8-78f6-469b-8997-b05182ba9e6a",
+          "type": "PROCESSOR",
+          "groupId": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+          "name": "Execute_Star_Schema_ETL"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          ""
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      },
+      {
+        "identifier": "9e1badfe-5265-49fa-8ddb-3210606ad0e4",
+        "instanceIdentifier": "b8ab4e0e-b18a-429c-9ffe-5388b5b14c34",
+        "name": "",
+        "source": {
+          "id": "b58a83a8-78f6-469b-8997-b05182ba9e6a",
+          "type": "PROCESSOR",
+          "groupId": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+          "name": "Execute_Star_Schema_ETL"
+        },
+        "destination": {
+          "id": "ce673bb6-f8be-4ad5-99bf-9e849f37083b",
+          "type": "PROCESSOR",
+          "groupId": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+          "name": "Log_Gold_ETL_Success"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "success"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      },
+      {
+        "identifier": "74b0c4fe-01e4-4a6c-8176-9e408bc16dc2",
+        "instanceIdentifier": "ac57943a-31d9-4a06-bace-1ca4c0da55f2",
+        "name": "",
+        "source": {
+          "id": "b58a83a8-78f6-469b-8997-b05182ba9e6a",
+          "type": "PROCESSOR",
+          "groupId": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+          "name": "Execute_Star_Schema_ETL"
+        },
+        "destination": {
+          "id": "7f9fdf1b-c37c-4857-9755-84e080ea5263",
+          "type": "PROCESSOR",
+          "groupId": "ff59e116-22bc-473a-9f8c-f065a997d0a2",
+          "name": "Log_Gold_ETL_Failure"
+        },
+        "labelIndex": 0,
+        "zIndex": 5,
+        "selectedRelationships": [
+          "failure"
+        ],
+        "backPressureObjectThreshold": 10000,
+        "backPressureDataSizeThreshold": "1 GB",
+        "flowFileExpiration": "0 sec",
+        "prioritizers": [],
+        "bends": [],
+        "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+        "partitioningAttribute": "",
+        "loadBalanceCompression": "DO_NOT_COMPRESS",
+        "componentType": "CONNECTION",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      }
+    ],
+    "labels": [],
+    "funnels": [],
+    "controllerServices": [
+      {
+        "identifier": "050422e8-90f3-4494-9808-686d581dd247",
+        "instanceIdentifier": "84017ce8-88c2-411f-9563-d6dacf5c0ea5",
+        "name": "Gold_DBCPConnectionPool",
+        "comments": "",
+        "type": "org.apache.nifi.dbcp.DBCPConnectionPool",
+        "bundle": {
+          "group": "org.apache.nifi",
+          "artifact": "nifi-dbcp-service-nar",
+          "version": "2.12.0"
+        },
+        "properties": {
+          "Database Connection URL": "jdbc:postgresql://localhost:5432/abc_hub_analytical",
+          "Database Driver Class Name": "org.postgresql.Driver",
+          "Database Driver Locations": "C:\\nifi-2.12.0-bin\\nifi-2.12.0\\drivers\\postgresql-42.7.13.jar",
+          "Database User": "postgres",
+          "Password": "1234",
+          "Max Total Connections": "8"
+        },
+        "propertyDescriptors": {},
+        "controllerServiceApis": [
+          {
+            "type": "org.apache.nifi.dbcp.DBCPService",
+            "bundle": {
+              "group": "org.apache.nifi",
+              "artifact": "nifi-standard-services-api-nar",
+              "version": "2.12.0"
+            }
+          }
+        ],
+        "scheduledState": "ENABLED",
+        "bulletinLevel": "WARN",
+        "componentType": "CONTROLLER_SERVICE",
+        "groupIdentifier": "ff59e116-22bc-473a-9f8c-f065a997d0a2"
+      }
+    ],
+    "defaultFlowFileExpiration": "0 sec",
+    "defaultBackPressureObjectThreshold": 10000,
+    "defaultBackPressureDataSizeThreshold": "1 GB",
+    "scheduledState": "ENABLED",
+    "executionEngine": "INHERITED",
+    "maxConcurrentTasks": 1,
+    "statelessFlowTimeout": "1 min",
+    "componentType": "PROCESS_GROUP",
+    "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE",
+    "flowFileConcurrency": "UNBOUNDED",
+    "groupIdentifier": "5edd70c2-c4c0-3a48-89e1-5969a90a9001"
+  },
+  "parameterContexts": {},
+  "externalControllerServices": {},
+  "parameterProviders": {}
+}
